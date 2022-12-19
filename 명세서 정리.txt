@@ -1,0 +1,27 @@
+1cateSeq                          카테고리기본번호
+2cateName                        카테고리명
+
+1biSeq                             책기본정보seq
+2biCateSeq                       카테고리번호
+3biImgSeq                       이미지기본키
+4biDImgSeq                    책상세이미지번호 
+5biWiSeq                         저자기본키
+6biTitle                            책제목
+7biPrice                           책가격
+8biPublisher                      출판사명
+9biPublish_dt                    출간일
+10biDePrice                     배송비
+11biContentTitle                책소개(제목)
+12biContentText                 책소개(내용)
+
+1imgSeq                            이미지기본키
+2imgFileName                    이미지파일명
+
+
+1dImgSeq                          상세이미지기본키
+2dImgFileName                   상세이미지파일명
+
+
+1wiSeq                               저자기본키
+2wiName                             저자명
+3wiIntro                              저자소개
