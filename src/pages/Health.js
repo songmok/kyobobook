@@ -6,7 +6,6 @@ const Health = () => {
       <div className="header-bt">
         <h2 className="header-txt">건강</h2>
       </div>
-      <div>리스트</div>
     </div>
   );
 };
