@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 const Home = ({ home }) => {
   const list = home.map((item) => {
     return (
@@ -25,5 +24,4 @@ const Home = ({ home }) => {
     </div>
   );
 };
-
 export default Home;
