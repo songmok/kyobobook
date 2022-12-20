@@ -1,6 +1,8 @@
 import React from "react";
 
+
 const Cook = () => {
+
   return (
     <div className="cook-box">
       <div>
