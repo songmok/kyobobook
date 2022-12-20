@@ -25,18 +25,16 @@ const App = () => {
   const [health, setHealth] = useState([]);
   const [language, setLanguage] = useState([]);
   const [computerit, setComputerIt] = useState([]);
-
   const fetchData = async () => {
     // 멤버목록 가져오기
     const params = {
       start: 1,
       count: 5,
     };
-
     const resultHome = await instance.get(requests.fetchHome, { params });
     setHome(resultHome.data);
-    const resultNovel = await instance.get(requests.fetchNovel, { params });
-    setNovel(resultNovel.data);
+    const resultNovel = await instance.get(requests.fetchNovel);
+    setNovel(resultNovel.data.data);
     const resultCook = await instance.get(requests.fetchCook, { params });
     setCook(resultCook.data);
     const resultHealth = await instance.get(requests.fetchHealth, { params });
@@ -53,6 +51,7 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
+    return () => {};
   }, []);
 
   return (
