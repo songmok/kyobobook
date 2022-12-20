@@ -102,4 +102,38 @@ em {
   cursor: pointer;
 }
 
-/* BookDetail */
+/* Home */
+/* .H-list {
+  position: relative;
+  display: block;
+  width: 376px;
+  height: 276px;
+  text-align: center;
+}
+.H-biImgSeq{
+  margin-bottom: 15px;
+}
+.H-biTitle {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.H-biPublisher {
+  font-size: 10px;
+  margin-bottom: 15px;
+}
+.H-biPrice {
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 24px;
+} */
+
+.H-t {
+  font-size: 13px;
+}
+.H-b {
+  font-size: 10px;
+}
+.H-p {
+  font-size: 10px;
+  font-weight: 700;
+}
