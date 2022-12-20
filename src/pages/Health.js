@@ -1,7 +1,14 @@
 import React from "react";
 
 const Health = () => {
-  return <div>Health</div>;
+  return (
+    <div>
+      <div className="header-bt">
+        <h2 className="header-txt">건강</h2>
+      </div>
+      <div>리스트</div>
+    </div>
+  );
 };
 
 export default Health;

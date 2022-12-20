@@ -22,6 +22,6 @@
 2dImgFileName                   상세이미지파일명
 
 
-1wiSeq                               저자기본키
+1wiSeq                              저자기본키
 2wiName                             저자명
-3wiIntro                              저자소개
+3wiIntro                            저자소개 
