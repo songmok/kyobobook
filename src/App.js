@@ -5,7 +5,6 @@ import Cook from "./pages/Cook";
 import Health from "./pages/Health";
 import Language from "./pages/Language";
 import ComputerIT from "./pages/ComputerIT";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
