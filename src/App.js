@@ -6,10 +6,8 @@ import Health from "./pages/Health";
 import Language from "./pages/Language";
 import ComputerIT from "./pages/ComputerIT";
 import Detail from "./components/Detail";
-
 import instance from "./api/axios";
 import requests from "./api/request";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -21,14 +19,18 @@ const App = () => {
   // 배열은 [getter, setter] 돌려받는다.
   // useState(초기값) : 초기값이리 함은 state 의 초기값
   const [detail, setDetail] = useState([]);
+  const [home, setHome] = useState([]);
 
   const fetchData = async () => {
+    // 멤버목록 가져오기
     const params = {
       start: 1,
       count: 5,
     };
     const resultDetail = await instance.get(requests.fetchDetail, { params });
     setDetail(resultDetail.data);
+    const resultHome = await instance.get(requests.fetchHome, { params });
+    setHome(resultHome.data);
   };
 
   useEffect(() => {
@@ -38,9 +40,9 @@ const App = () => {
   return (
     <Router>
       <div className="container">
-        {/* <Header /> */}
+        <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home home={home} />} />
           <Route path="/novel" element={<Novel />} />
           <Route path="/cook" element={<Cook />} />
           <Route path="/health" element={<Health />} />
@@ -52,5 +54,4 @@ const App = () => {
     </Router>
   );
 };
-
 export default App;
