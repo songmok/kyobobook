@@ -4,10 +4,6 @@ const Home = ({ home }) => {
   const list = home.map((item) => {
     return (
       <div>
-        {/* <div className="row">
-          <div className="header-bt">
-            <div className="header-txt"></div>
-          </div> */}
         <div className="H-list">
           <div>
             <img src={item.biImgSeq} alt={item.biTitle} />
@@ -17,11 +13,17 @@ const Home = ({ home }) => {
           <div className="H-p m-3">{item.biPrice}</div>
         </div>
       </div>
-      // </div>
     );
   });
   console.log(home);
-  return <div>{list}</div>;
+  return (
+    <div>
+      <div className="header-bt">
+        <div className="header-txt">HOME</div>
+      </div>
+      <div>{list}</div>
+    </div>
+  );
 };
 
 export default Home;

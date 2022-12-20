@@ -20,7 +20,7 @@ const App = () => {
   // useState(초기값) : 초기값이리 함은 state 의 초기값
   const [detail, setDetail] = useState([]);
   const [home, setHome] = useState([]);
-
+  const [novel, setNovel] = useState([]);
   const fetchData = async () => {
     // 멤버목록 가져오기
     const params = {
@@ -31,10 +31,14 @@ const App = () => {
     setDetail(resultDetail.data);
     const resultHome = await instance.get(requests.fetchHome, { params });
     setHome(resultHome.data);
+    const resultNovel = await instance.get(requests.fetchNovel);
+    // console.log(resultNovel.data.data.content[0].contentText);
+    setNovel(resultNovel.data.data);
   };
 
   useEffect(() => {
     fetchData();
+    return () => {};
   }, []);
 
   return (
@@ -43,7 +47,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home home={home} />} />
-          <Route path="/novel" element={<Novel />} />
+          <Route path="/novel" element={<Novel novel={novel} />} />
           <Route path="/cook" element={<Cook />} />
           <Route path="/health" element={<Health />} />
           <Route path="/language" element={<Language />} />
