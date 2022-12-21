@@ -1,38 +1,38 @@
-// import React from "react";
-
-// const Detail = () => {
-//   <div className="detail-box">
-//     <div>
-//       <div className="header-bt">
-//         <h2 className="header-txt"></h2>
-//       </div>
-//     </div>
-//   </div>;
-
-// };
-
-// export default Detail;
 import React from "react";
 
 const Detail = (props) => {
   const list = props.detail.map((item, index) => {
     return (
-      <div className="">
-        <h2>소설</h2>
-        <img
-          src={`http://192.168.0.183:9988/${item.imageUri}`}
-          alt={item.biTitle}
-        />
-        <div className="">
-          <p>{item.biTitle}</p>
+      <div key={index}>
+        <div className="d-flexbox">
+          <img
+            src={`http://192.168.0.183:9988${item.imageUri}`}
+            className="img-1"
+            alt={item.title}
+          />
         </div>
-        <div className="">{item.biTitle}</div>
-        <div className="">{item.biTitle}</div>
-        <h6>{item.biPrice}</h6>
+        <p className="d-title">{item.title}</p>
+        <span className="d-WiSeq">{item.wiSeq}</span>
+        <div className="d-txtbox">
+          <span className="d-publisher">{item.publisher}</span>
+          <span className="d-publishDt">{item.publishDt}</span>
+        </div>
+        <span className="d-price">{item.price}</span>
+        <div className="d-gray-box">
+          <span className="d-info">책소개</span>
+          <p>
+            <p dangerouslySetInnerHTML={{ __html: item.contentTitle }}></p>
+          </p>
+          <p dangerouslySetInnerHTML={{ __html: item.contentText }}></p>
+        </div>
       </div>
     );
   });
-  return <div className="mt-32">{list}</div>;
+  return (
+    <div>
+      <div>{list}</div>
+    </div>
+  );
 };
 
 export default Detail;
