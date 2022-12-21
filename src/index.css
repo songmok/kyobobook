@@ -57,6 +57,9 @@ em {
   width: 100%;
   display: block;
 }
+img {
+  width: 100px;
+}
 .menu-icon {
   position: absolute;
   right: 0;
@@ -136,7 +139,23 @@ em {
   font-weight: bold;
   margin: 0;
 }
-
+/* PAGINATION*/
+.pagination {
+  justify-content: center;
+}
+.pagination li {
+  display: inline-block;
+  background: #fefefe;
+  overflow: hidden;
+}
+.pagination li a {
+  width: 10px;
+  height: 10px;
+  padding: 10px;
+}
+.pagination li a:focus {
+  background: blue;
+}
 /* Home */
 
 .H-t {
