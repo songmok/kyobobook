@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import requests from "./../api/request";
 import instance from "./../api/axios";
+
 // import "./Paging.css";
 import Pagination from "react-js-pagination";
 import { Link } from "react-router-dom";
@@ -15,18 +16,13 @@ const ComputerIT = (props) => {
       .then((res) => setComputerIt(res.data));
   };
   const fetchData = async () => {
-
     // 멤버목록 가져오기
     const params = {
       start: 1,
       count: 5,
     };
-
-    const resultcomputerIT = await instance.get(requests.fetchComputerIT);
-
-    setcomputerIT(resultcomputerIT.data.data);
-
-
+    const resultcomputerIt = await instance.get(requests.fetchComputerIt);
+    setComputerIt(resultcomputerIt.data.data);
   };
 
   useEffect(() => {
@@ -58,6 +54,9 @@ const ComputerIT = (props) => {
     <div>
       <div className="header-bt">
         <div className="header-txt">컴퓨터/IT</div>
+      </div>
+      <div>
+        {getClick}
         <select name="items" onChange={itemChange}>
           <option value="5">5개</option>
           <option value="10">10개</option>
@@ -65,7 +64,6 @@ const ComputerIT = (props) => {
           <option value="20">20개</option>
         </select>
       </div>
-      <div>{getClick}</div>
       {computerIT
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {
