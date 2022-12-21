@@ -43,7 +43,7 @@ const App = () => {
       params,
     });
     setComputerIt(resultComputerit.data);
-    const resultDetail = await instance.get(requests.fetchDetail);
+    const resultDetail = await instance.get(requests.fetchDetail, { params });
     setDetail(resultDetail.data.data);
   };
 
@@ -65,7 +65,7 @@ const App = () => {
             path="/computerit"
             element={<ComputerIT computerit={computerit} />}
           />
-          <Route path="/detail" element={<Detail detail={detail} />} />
+          <Route path="/detail/:id" element={<Detail detail={detail} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
