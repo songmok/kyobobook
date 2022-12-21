@@ -23,9 +23,7 @@ const Language = (props) => {
     };
     const resultlanguage = await instance.get(requests.fetchLanguage);
 
-
-    setLanguage(resultlanguage.data.data);
-
+    setlanguage(resultlanguage.data.data);
   };
 
   useEffect(() => {
@@ -57,9 +55,6 @@ const Language = (props) => {
     <div>
       <div className="header-bt">
         <div className="header-txt">외국어</div>
-      </div>
-      <div>
-        {getClick}
         <select name="items" onChange={itemChange}>
           <option value="5">5개</option>
           <option value="10">10개</option>
@@ -67,6 +62,7 @@ const Language = (props) => {
           <option value="20">20개</option>
         </select>
       </div>
+      <div>{getClick}</div>
       {language
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {

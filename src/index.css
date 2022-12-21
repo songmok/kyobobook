@@ -126,22 +126,35 @@ img {
   cursor: pointer;
 }
 .header-bt {
+  position: relative;
   background: #334475;
   width: 100%;
   height: 46px;
-  display: flex;
-  justify-content: center;
+  display: block;
+  margin-bottom: 30px;
 }
 .header-txt {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   color: #fff;
   align-self: center;
   font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
+select {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 /* PAGINATION*/
 .pagination {
   justify-content: center;
+  display: flex;
 }
 .pagination li {
   display: inline-block;
@@ -156,6 +169,7 @@ img {
 .pagination li a:focus {
   background: blue;
 }
+
 /* Home */
 
 .H-t {
@@ -168,8 +182,65 @@ img {
   font-size: 10px;
   font-weight: 700;
 }
-
-
+/* list */
+.list {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0 20px;
+}
+.list-wrap {
+  background: rgba(77, 184, 72, 0.1);
+}
+.list::after .list-left {
+}
+.list-left img {
+  width: 100%;
+}
+.list-right {
+  padding: 20px;
+  position: relative;
+}
+.list-right::before {
+  content: "→";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  font-weight: bold;
+  color: #666;
+  font-size: 25px;
+}
+.list-right::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #4db848;
+}
+.list-title {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #334475;
+}
+.list-txt-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.list-txt {
+  display: block;
+  font-size: 13px;
+}
+.list-price {
+  font-size: 15px;
+  font-weight: bold;
+  color: #4db848;
+}
 /* detail */
 .d-flexbox {
   display: block;
@@ -204,7 +275,6 @@ img {
   color: #000949;
 }
 .d-info {
-  
 }
 .d-gray-box {
   width: 100%;
