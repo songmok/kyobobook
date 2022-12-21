@@ -4,18 +4,29 @@ import requests from "./../api/request";
 import instance from "./../api/axios";
 // import "./Paging.css";
 import Pagination from "react-js-pagination";
+import { Link } from "react-router-dom";
 const ComputerIT = (props) => {
-  const [computerIT, setcomputerIT] = useState([]);
+  const [computerIT, setComputerIt] = useState([]);
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(5);
   const getClick = () => {
     axios
       .get("http://192.168.0.183:9988/api/book/category/5")
-      .then((res) => setcomputerIT(res.data));
+      .then((res) => setComputerIt(res.data));
   };
   const fetchData = async () => {
-    const resultcomputerIT = await instance.get(requests.fetchComputerIt);
+
+    // 멤버목록 가져오기
+    const params = {
+      start: 1,
+      count: 5,
+    };
+
+    const resultcomputerIT = await instance.get(requests.fetchComputerIT);
+
     setcomputerIT(resultcomputerIT.data.data);
+
+
   };
 
   useEffect(() => {
@@ -62,14 +73,14 @@ const ComputerIT = (props) => {
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
             <div>
-              <h3>{v.title}</h3>
+              <Link to={`/detail/${v.seq}`}>{v.title}</Link>
               <img
                 src={`http://192.168.0.183:9988${v.imageUri}`}
                 alt={v.title}
                 className="img"
               />
               <div>{price2}원</div>
-              <div>{v.contentTitle}</div>
+              <p dangerouslySetInnerHTML={{ __html: v.contentTitle }}></p>
             </div>
           );
         })}

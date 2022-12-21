@@ -5,6 +5,7 @@ import instance from "./../api/axios";
 
 // import "./Paging.css";
 import Pagination from "react-js-pagination";
+import { Link } from "react-router-dom";
 const Novel = (props) => {
   const [novel, setNovel] = useState([]);
   const [page, setPage] = useState(1);
@@ -64,6 +65,7 @@ const Novel = (props) => {
           const prici = v.price;
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
+
             <div className="list">
               <div className="list-left">
                 <img
@@ -80,6 +82,17 @@ const Novel = (props) => {
                 </div>
                 <div className="list-price">{price2}원</div>
               </div>
+
+            <div>
+              <Link to={`/detail/${v.seq}`}>{v.title}</Link>
+              <img
+                src={`http://192.168.0.183:9988${v.imageUri}`}
+                alt={v.title}
+                className="img"
+              />
+              <div>{price2}원</div>
+              <p dangerouslySetInnerHTML={{ __html: v.contentTitle }}></p>
+
             </div>
           );
         })}
