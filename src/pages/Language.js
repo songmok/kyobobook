@@ -20,7 +20,7 @@ const Language = (props) => {
       start: 1,
       count: 5,
     };
-    const resultlanguage = await instance.get(requests.fetchlanguage);
+    const resultlanguage = await instance.get(requests.fetchLanguage);
     setlanguage(resultlanguage.data.data);
   };
 

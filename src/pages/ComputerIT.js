@@ -20,7 +20,7 @@ const ComputerIT = (props) => {
       start: 1,
       count: 5,
     };
-    const resultcomputerIT = await instance.get(requests.fetchcomputerIT);
+    const resultcomputerIT = await instance.get(requests.fetchComputerIT);
     setcomputerIT(resultcomputerIT.data.data);
   };
 
