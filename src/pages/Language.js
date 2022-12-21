@@ -20,7 +20,7 @@ const Language = (props) => {
       start: 1,
       count: 5,
     };
-    const resultlanguage = await instance.get(requests.fetchlanguage);
+    const resultlanguage = await instance.get(requests.fetchLanguage);
     setlanguage(resultlanguage.data.data);
   };
 
@@ -53,9 +53,6 @@ const Language = (props) => {
     <div>
       <div className="header-bt">
         <div className="header-txt">외국어</div>
-      </div>
-      <div>
-        {getClick}
         <select name="items" onChange={itemChange}>
           <option value="5">5개</option>
           <option value="10">10개</option>
@@ -63,6 +60,7 @@ const Language = (props) => {
           <option value="20">20개</option>
         </select>
       </div>
+      <div>{getClick}</div>
       {language
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {

@@ -9,7 +9,7 @@ const Novel = (props) => {
   const [novel, setNovel] = useState([]);
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(5);
-  const getClick = () => {
+  const getList = () => {
     axios
       .get("http://192.168.0.183:9988/api/book/category/1")
       .then((res) => setNovel(res.data));
@@ -47,12 +47,9 @@ const Novel = (props) => {
   // });
 
   return (
-    <div>
+    <div className="list-wrap">
       <div className="header-bt">
         <div className="header-txt">소설</div>
-      </div>
-      <div>
-        {getClick}
         <select name="items" onChange={itemChange}>
           <option value="5">5개</option>
           <option value="10">10개</option>
@@ -60,21 +57,29 @@ const Novel = (props) => {
           <option value="20">20개</option>
         </select>
       </div>
+      <div className="get-list">{getList}</div>
       {novel
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {
           const prici = v.price;
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
-            <div>
-              <h3>{v.title}</h3>
-              <img
-                src={`http://192.168.0.183:9988${v.imageUri}`}
-                alt={v.title}
-                className="img"
-              />
-              <div>{price2}원</div>
-              <div>{v.contentTitle}</div>
+            <div className="list">
+              <div className="list-left">
+                <img
+                  src={`http://192.168.0.183:9988${v.imageUri}`}
+                  alt={v.title}
+                  className="img"
+                />
+              </div>
+              <div className="list-right">
+                <h3 className="list-title">{v.title}</h3>
+                <div className="list-txt-wrap">
+                  <span className="list-txt">{v.wiSeq}</span>
+                  <span className="list-txt">{v.publisher}</span>
+                </div>
+                <div className="list-price">{price2}원</div>
+              </div>
             </div>
           );
         })}
