@@ -15,7 +15,6 @@ const Home = () => {
         <Link className="btn btn-outline-primary btn-lg mt-5" to="/novel">
           소설
         </Link>
-
         <Link className="btn btn-outline-primary btn-lg" to="/cook">
           요리
         </Link>

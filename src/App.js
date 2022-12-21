@@ -23,18 +23,25 @@ const App = () => {
 
   const fetchData = async () => {
     // 멤버목록 가져오기
-
-    const resultHome = await instance.get(requests.fetchHome);
+    const params = {
+      start: 1,
+      count: 5,
+    };
+    const resultHome = await instance.get(requests.fetchHome, { params });
     setHome(resultHome.data);
     const resultNovel = await instance.get(requests.fetchNovel);
     setNovel(resultNovel.data.data);
-    const resultCook = await instance.get(requests.fetchCook);
+    const resultCook = await instance.get(requests.fetchCook, { params });
     setCook(resultCook.data);
-    const resultHealth = await instance.get(requests.fetchHealth);
+    const resultHealth = await instance.get(requests.fetchHealth, { params });
     setHealth(resultHealth.data);
-    const resultLanguage = await instance.get(requests.fetchLanguage);
+    const resultLanguage = await instance.get(requests.fetchLanguage, {
+      params,
+    });
     setLanguage(resultLanguage.data);
-    const resultComputerit = await instance.get(requests.fetchComputerIt);
+    const resultComputerit = await instance.get(requests.fetchComputerIt, {
+      params,
+    });
     setComputerIt(resultComputerit.data);
     const resultDetail = await instance.get(requests.fetchDetail);
     setDetail(resultDetail.data.data);

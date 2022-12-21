@@ -16,10 +16,6 @@ const Novel = (props) => {
   };
   const fetchData = async () => {
     // 멤버목록 가져오기
-    const params = {
-      start: 1,
-      count: 5,
-    };
     const resultNovel = await instance.get(requests.fetchNovel);
     setNovel(resultNovel.data.data);
   };

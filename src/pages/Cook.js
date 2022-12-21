@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import requests from "./../api/request";
 import instance from "./../api/axios";
-
 // import "./Paging.css";
 import Pagination from "react-js-pagination";
 const Cook = (props) => {
