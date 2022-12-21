@@ -21,8 +21,11 @@ const ComputerIT = (props) => {
       start: 1,
       count: 5,
     };
-    const resultcomputerIt = await instance.get(requests.fetchComputerIt);
-    setComputerIt(resultcomputerIt.data.data);
+
+    const resultcomputerIT = await instance.get(requests.fetchComputerIT);
+    setcomputerIT(resultcomputerIT.data.data);
+
+
   };
 
   useEffect(() => {

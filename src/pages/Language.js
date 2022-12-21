@@ -22,7 +22,10 @@ const Language = (props) => {
       count: 5,
     };
     const resultlanguage = await instance.get(requests.fetchLanguage);
+
+
     setLanguage(resultlanguage.data.data);
+
   };
 
   useEffect(() => {
