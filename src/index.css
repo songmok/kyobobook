@@ -149,3 +149,46 @@ em {
   font-size: 10px;
   font-weight: 700;
 }
+
+
+/* detail */
+.d-flexbox {
+  display: block;
+  position: relative;
+  text-align: center;
+}
+.img-1 {
+  width: 230px;
+  height: 360px;
+}
+.d-title {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.d-WiSeq {
+  display: block;
+  font-size: 10px;
+}
+.d-txtbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+.d-price {
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 15px;
+  color: #000949;
+}
+.d-info {
+  
+}
+.d-gray-box {
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
+}

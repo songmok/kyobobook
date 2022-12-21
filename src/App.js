@@ -13,45 +13,35 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const App = () => {
-  // 멤버목록 데이터
-  // useState 는 state 가 변경되면 실행되는 Hook 이다.
-  // useState() 를 실행하면 [] 리턴이 된다.
-  // 배열은 [state, state 업데이트 함수] 돌려받는다.
-  // 배열은 [getter, setter] 돌려받는다.
-  // useState(초기값) : 초기값이리 함은 state 의 초기값
   const [home, setHome] = useState([]);
   const [novel, setNovel] = useState([]);
   const [cook, setCook] = useState([]);
   const [health, setHealth] = useState([]);
   const [language, setLanguage] = useState([]);
   const [computerit, setComputerIt] = useState([]);
+  const [detail, setDetail] = useState([]);
+
   const fetchData = async () => {
     // 멤버목록 가져오기
-    const params = {
-      start: 1,
-      count: 5,
-    };
-    const resultHome = await instance.get(requests.fetchHome, { params });
+
+    const resultHome = await instance.get(requests.fetchHome);
     setHome(resultHome.data);
     const resultNovel = await instance.get(requests.fetchNovel);
     setNovel(resultNovel.data.data);
-    const resultCook = await instance.get(requests.fetchCook, { params });
+    const resultCook = await instance.get(requests.fetchCook);
     setCook(resultCook.data);
-    const resultHealth = await instance.get(requests.fetchHealth, { params });
+    const resultHealth = await instance.get(requests.fetchHealth);
     setHealth(resultHealth.data);
-    const resultLanguage = await instance.get(requests.fetchLanguage, {
-      params,
-    });
+    const resultLanguage = await instance.get(requests.fetchLanguage);
     setLanguage(resultLanguage.data);
-    const resultComputerit = await instance.get(requests.fetchComputerIt, {
-      params,
-    });
+    const resultComputerit = await instance.get(requests.fetchComputerIt);
     setComputerIt(resultComputerit.data);
+    const resultDetail = await instance.get(requests.fetchDetail);
+    setDetail(resultDetail.data.data);
   };
 
   useEffect(() => {
     fetchData();
-    return () => {};
   }, []);
 
   return (
@@ -68,7 +58,7 @@ const App = () => {
             path="/computerit"
             element={<ComputerIT computerit={computerit} />}
           />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail" element={<Detail detail={detail} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
