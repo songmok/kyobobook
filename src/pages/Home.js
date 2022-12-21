@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from "react";
-const Home = ({ home }) => {
-  const list = home.map((item) => {
-    return (
-      <div>
-        <div className="H-list">
-          <div>
-            <img src={item.biImgSeq} alt={item.biTitle} />
-          </div>
-          <div className="H-t m-4">{item.biTitle}</div>
-          <div className="H-b m-2">{item.biPublisher}</div>
-          <div className="H-p m-3">{item.biPrice}</div>
-        </div>
-      </div>
-    );
-  });
-  console.log(home);
+import { Link } from "react-router-dom";
+const Home = () => {
   return (
     <div>
       <div className="header-bt">
         <div className="header-txt">HOME</div>
       </div>
-      <div>{list}</div>
+      <div
+        class="btn-group-vertical"
+        role="group"
+        aria-label="Vertical button group"
+      >
+        <Link className="btn btn-outline-primary btn-lg mt-5" to="/novel">
+          소설
+        </Link>
+        
+        <Link className="btn btn-outline-primary btn-lg" to="/cook">
+          요리
+        </Link>
+        <Link className="btn btn-outline-primary btn-lg" to="/health">
+          건강
+        </Link>
+        <Link className="btn btn-outline-primary btn-lg" to="/language">
+          외국어
+        </Link>
+        <Link className="btn btn-outline-primary btn-lg" to="/computerit">
+          컴퓨터/IT
+        </Link>
+      </div>
     </div>
   );
 };
