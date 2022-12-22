@@ -53,7 +53,7 @@ const Novel = (props) => {
           const prici = v.price;
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
-            <Link to={`/detail/${v.seq}`}>
+            <Link to={`/detail/${v.seq}`} key={i}>
               <div className="list">
                 <div className="list-left">
                   <img
@@ -86,3 +86,6 @@ const Novel = (props) => {
 };
 
 export default Novel;
+// .pagination-controls__button--active {
+//   background-color: #4D7EA8;
+//   color: white;
