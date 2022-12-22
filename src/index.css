@@ -37,13 +37,13 @@ em {
 .container {
   text-align: center;
   margin-top: 20px;
-  /* width: 367px; */
+  width: 367px;
   padding: 0;
 }
 /* HEADER */
 .header {
   position: relative;
-  height: 12.6946vh;
+  height: 5.6946vh;
   padding: 0 20px;
 }
 
@@ -64,7 +64,7 @@ em {
 }
 .menu-icon {
   position: absolute;
-  right: 0;
+  left: 0;
   z-index: 3;
   font-size: 3rem;
   display: block;
@@ -72,37 +72,61 @@ em {
 }
 .show-menu {
   position: absolute;
-  right: 0px;
+  left: 0px;
   height: 0;
   overflow: hidden;
   top: 0;
   transition: all 0.3s;
   z-index: 999;
 }
-
 .hide-menu {
   position: absolute;
   height: 300px;
   overflow: hidden;
-  right: 0px;
+  left: 0px;
   top: 30px;
   transition: all 0.3s;
   z-index: 999;
 }
-.gnb {
+.gnb-top {
   text-align: center;
   background: #fff;
   border: 1px solid #000;
   padding: 5px 10px;
 }
-.depth {
-}
-.btn-success {
+.btn-success-top {
   display: block;
   color: #000;
   font-weight: bold;
   padding: 10px 0;
   font-size: 2rem;
+}
+.original_header {
+  position: fixed;
+  z-index: 9999;
+  font-size: 4rem;
+  font-weight: 400;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.change_header {
+  display: none;
+}
+.original_header .gnb {
+  display: flex;
+}
+.original_header .depth {
+  width: calc(100% / 5);
+  border: 1px solid #000;
+  background: #fff;
+}
+.original_header .btn-success {
+  display: block;
+  font-weight: bold;
+  padding: 10px 0;
+  font-size: 1.5rem;
+  white-space: normal;
 }
 
 .searchbox-wrap {
@@ -150,10 +174,13 @@ em {
 }
 select {
   position: absolute;
-  left: 20px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
+  border-radius: 10px;
+  z-index: 9999999;
 }
+
 /* PAGINATION*/
 .pagination {
   display: flex;
@@ -161,11 +188,10 @@ select {
   margin-top: 15px;
   font-weight: bold;
   position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   z-index: 1000;
   bottom: 0;
-  width: 100%;
+  width: 367px;
   height: 50px;
   margin: 0;
   background: #fff;

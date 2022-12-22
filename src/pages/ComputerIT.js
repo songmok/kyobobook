@@ -16,11 +16,6 @@ const ComputerIT = (props) => {
       .then((res) => setComputerIt(res.data));
   };
   const fetchData = async () => {
-    // 멤버목록 가져오기
-    const params = {
-      start: 1,
-      count: 5,
-    };
     const resultcomputerIt = await instance.get(requests.fetchComputerIt);
     setComputerIt(resultcomputerIt.data.data);
   };

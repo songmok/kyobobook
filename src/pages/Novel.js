@@ -47,16 +47,12 @@ const Novel = (props) => {
       </div>
       <div className="get-list">{getClick}</div>
 
-
-
-
       {novel
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {
           const prici = v.price;
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
-
             <Link to={`/detail/${v.seq}`} key={i}>
               <div className="list">
                 <div className="list-left">
