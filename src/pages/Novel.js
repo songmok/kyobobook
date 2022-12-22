@@ -16,7 +16,6 @@ const Novel = (props) => {
       .then((res) => setNovel(res.data));
   };
   const fetchData = async () => {
-    // 멤버목록 가져오기
     const resultNovel = await instance.get(requests.fetchNovel);
     setNovel(resultNovel.data.data);
   };
@@ -30,22 +29,10 @@ const Novel = (props) => {
     setItems(Number(e.target.value));
     console.log(e.target.value);
   };
-  // console.log(items * (page - 1), items * (page - 1) + items);
 
   const handlePageChange = (page) => {
     setPage(page);
   };
-  // const novelArr = props.novel.map((item) => {
-  //   return (
-  //     <div>
-  //       <img
-  //         src={`http://192.168.0.183:9988${item.imageUri}`}
-  //         alt={item.title}
-  //         className="img"
-  //       />
-  //     </div>
-  //   );
-  // });
 
   return (
     <div className="list-wrap">
@@ -59,13 +46,18 @@ const Novel = (props) => {
         </select>
       </div>
       <div className="get-list">{getClick}</div>
+
+
+
+
       {novel
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {
           const prici = v.price;
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
-            <Link to={`/detail/${v.seq}`}>
+
+            <Link to={`/detail/${v.seq}`} key={i}>
               <div className="list">
                 <div className="list-left">
                   <img
@@ -98,5 +90,6 @@ const Novel = (props) => {
 };
 
 export default Novel;
-// npm install react-js-pagination
-// 82 83 84 85 86 88 89 87
+// .pagination-controls__button--active {
+//   background-color: #4D7EA8;
+//   color: white;

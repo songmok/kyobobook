@@ -9,6 +9,7 @@ import Detail from "./pages/Detail";
 import NotFound from "./pages/NotFound";
 import instance from "./api/axios";
 import requests from "./api/request";
+import Search from "./pages/search";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -20,7 +21,7 @@ const App = () => {
   const [language, setLanguage] = useState([]);
   const [computerit, setComputerIt] = useState([]);
   const [detail, setDetail] = useState([]);
-
+  const [cate, setCate] = useState([]);
   const fetchData = async () => {
     // 멤버목록 가져오기
     const params = {
@@ -45,6 +46,8 @@ const App = () => {
     setComputerIt(resultComputerit.data);
     const resultDetail = await instance.get(requests.fetchDetail, { params });
     setDetail(resultDetail.data.data);
+    const resultCate = await instance.get(requests.fetchHeader, { params });
+    setCate(resultCate.data.data);
   };
 
   useEffect(() => {
@@ -57,6 +60,8 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home home={home} />} />
+          <Route path="/" element={<Search home={home} />} />
+
           <Route path="/novel" element={<Novel novel={novel} />} />
           <Route path="/cook" element={<Cook cook={cook} />} />
           <Route path="/health" element={<Health health={health} />} />
