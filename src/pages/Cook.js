@@ -1,27 +1,27 @@
-import React, { useState } from "react";
-// import axios from "axios";
-// import requests from "./../api/request";
-// import instance from "./../api/axios";
-// // import "./Paging.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import requests from "./../api/request";
+import instance from "./../api/axios";
+// import "./Paging.css";
 import Pagination from "react-js-pagination";
 import { Link } from "react-router-dom";
-const Cook = ({cook}) => {
-  // const [cook, setCook] = useState([]);
+const Cook = (props) => {
+  const [cook, setCook] = useState([]);
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(5);
-  // const getClick = () => {
-  //   axios
-  //     .get("http://192.168.0.183:9988/api/book/category/2")
-  //     .then((res) => setCook(res.data));
-  // };
-  // const fetchData = async () => {
-  //   const resultCook = await instance.get(requests.fetchCook);
-  //   setCook(resultCook.data.data);
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  //   return () => {};
-  // }, []);
+  const getClick = () => {
+    axios
+      .get("http://192.168.0.183:9988/api/book/category/2")
+      .then((res) => setCook(res.data));
+  };
+  const fetchData = async () => {
+    const resultCook = await instance.get(requests.fetchCook);
+    setCook(resultCook.data.data);
+  };
+  useEffect(() => {
+    fetchData();
+    return () => {};
+  }, []);
   const itemChange = (e) => {
     setItems(Number(e.target.value));
   };
@@ -30,7 +30,7 @@ const Cook = ({cook}) => {
     setPage(page);
   };
   return (
-    <div>
+    <div className="list-wrap">
       <div className="header-bt">
         <div className="header-txt">요리</div>
         <select name="items" onChange={itemChange}>
@@ -40,22 +40,32 @@ const Cook = ({cook}) => {
           <option value="20">20개</option>
         </select>
       </div>
+      <div className="get-list">{getClick}</div>
       {cook
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {
           const prici = v.price;
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
-            <div>
-              <Link to={`/detail/${v.seq}`}>{v.title}</Link>
-              <img
-                src={`http://192.168.0.183:9988${v.imageUri}`}
-                alt={v.title}
-                className="img"
-              />
-              <div>{price2}원</div>
-              <p dangerouslySetInnerHTML={{ __html: v.contentTitle }}></p>
-            </div>
+            <Link to={`/detail/${v.seq}`} key={i}>
+              <div className="list">
+                <div className="list-left">
+                  <img
+                    src={`http://192.168.0.183:9988${v.imageUri}`}
+                    alt={v.title}
+                    className="img"
+                  />
+                </div>
+                <div className="list-right">
+                  <h3 className="list-title">{v.title}</h3>
+                  <div className="list-txt-wrap">
+                    <span className="list-txt">{v.wiSeq}</span>
+                    <span className="list-txt">{v.publisher}</span>
+                  </div>
+                  <div className="list-price">{price2}원</div>
+                </div>
+              </div>
+            </Link>
           );
         })}
       <Pagination

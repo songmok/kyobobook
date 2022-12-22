@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-
+import Apps from "../pages/search";
 const Header = () => {
   const [nav, setNav] = useState(false); // 메뉴의 초기값을 false로 설정
-
   const toggleMenu = () => {
     setNav((nav) => !nav); // on,off 개념 boolean
   };
@@ -18,7 +17,7 @@ const Header = () => {
           className="menu-icon"
           onClick={() => toggleMenu()}
         ></FontAwesomeIcon>
-        <nav className={nav ? "show-menu" : "hide-menu"}>
+        <nav className={nav ? "show-menu" : "hide-menu"} id="main">
           <ul className="gnb">
             <li className="depth">
               <Link className="btn-success" to="/novel">
@@ -56,12 +55,13 @@ const Header = () => {
         />
       </Link>
       <div className="searchbox-wrap">
-        <input
+        <Apps />
+        {/* <input
           type="text"
           id="search-text"
           placeholder="search"
           className="searchbox"
-        ></input>
+        ></input> */}
         <div className="searchbox-icon">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </div>

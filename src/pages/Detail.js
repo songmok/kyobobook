@@ -36,6 +36,7 @@ const Detail = (props) => {
         </div>
         <div className="d-price">{bookObj.price}원</div>
       </div>
+
       <div class="d-bt-2 d-grid gap-2 col-6 mx-auto">
         <button class="d-bt-2 btn btn-primary" type="button ">
           책정보
@@ -47,42 +48,11 @@ const Detail = (props) => {
           dangerouslySetInnerHTML={{ __html: bookObj.contentTitle }}
         ></p>
         <p dangerouslySetInnerHTML={{ __html: bookObj.contentText }}></p>
-
         <img
           src={`http://192.168.0.183:9988${bookObj.detailImageUri}`}
           className="img-2"
           alt={bookObj.title}
         />
-      </div>
-
-      <p>
-        <a
-          class="btn btn-primary"
-          data-bs-toggle="collapse"
-          href="#collapseExample"
-          role="button"
-          aria-expanded="false"
-          aria-controls="collapseExample"
-        >
-          
-        </a>
-        <button
-          class="btn btn-primary"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseExample"
-          aria-expanded="false"
-          aria-controls="collapseExample"
-        >
-          Button with data-bs-target
-        </button>
-      </p>
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-          Some placeholder content for the collapse component. This panel is
-          hidden by default but revealed when the user activates the relevant
-          trigger.
-        </div>
       </div>
     </div>
   );

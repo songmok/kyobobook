@@ -1,12 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import requests from "./../api/request";
+import instance from "./../api/axios";
+
+// import "./Paging.css";
 import Pagination from "react-js-pagination";
 import { Link } from "react-router-dom";
-
-
-const Novel = ({ novel }) => {
-  // const [novel, setNovel] = useState([]);
+const Novel = (props) => {
+  const [novel, setNovel] = useState([]);
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(5);
+  const getClick = () => {
+    axios
+      .get("http://192.168.0.183:9988/api/book/category/1")
+      .then((res) => setNovel(res.data));
+  };
+  const fetchData = async () => {
+    const resultNovel = await instance.get(requests.fetchNovel);
+    setNovel(resultNovel.data.data);
+  };
+
+  useEffect(() => {
+    fetchData();
+    return () => {};
+  }, []);
+
   const itemChange = (e) => {
     setItems(Number(e.target.value));
     console.log(e.target.value);
@@ -15,6 +33,7 @@ const Novel = ({ novel }) => {
   const handlePageChange = (page) => {
     setPage(page);
   };
+
   return (
     <div className="list-wrap">
       <div className="header-bt">
@@ -26,14 +45,15 @@ const Novel = ({ novel }) => {
           <option value="20">20개</option>
         </select>
       </div>
-      <div className="get-list"></div>
+      <div className="get-list">{getClick}</div>
+
       {novel
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {
           const prici = v.price;
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
-            <Link to={`/detail/${v.seq}`}>
+            <Link to={`/detail/${v.seq}`} key={i}>
               <div className="list">
                 <div className="list-left">
                   <img
@@ -49,7 +69,6 @@ const Novel = ({ novel }) => {
                     <span className="list-txt">{v.publisher}</span>
                   </div>
                   <div className="list-price">{price2}원</div>
-                  <p dangerouslySetInnerHTML={{ __html: v.contentTitle }}></p>
                 </div>
               </div>
             </Link>
@@ -67,3 +86,6 @@ const Novel = ({ novel }) => {
 };
 
 export default Novel;
+// .pagination-controls__button--active {
+//   background-color: #4D7EA8;
+//   color: white;
