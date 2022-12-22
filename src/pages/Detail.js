@@ -9,6 +9,7 @@ const Detail = (props) => {
       return item;
     }
   });
+
   // console.log(item);
   // const list = props.detail.find((item, index) => {
   //   return (
