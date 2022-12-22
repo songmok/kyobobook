@@ -31,14 +31,14 @@ const App = () => {
     setHome(resultHome.data);
     const resultNovel = await instance.get(requests.fetchNovel);
     setNovel(resultNovel.data.data);
-    const resultCook = await instance.get(requests.fetchCook, { params });
-    setCook(resultCook.data);
+    const resultCook = await instance.get(requests.fetchCook);
+    setCook(resultCook.data.data);
     const resultHealth = await instance.get(requests.fetchHealth, { params });
-    setHealth(resultHealth.data);
+    setHealth(resultHealth.data.data);
     const resultLanguage = await instance.get(requests.fetchLanguage, {
       params,
     });
-    setLanguage(resultLanguage.data);
+    setLanguage(resultLanguage.data.data);
     const resultComputerit = await instance.get(requests.fetchComputerIt, {
       params,
     });

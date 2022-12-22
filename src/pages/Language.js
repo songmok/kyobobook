@@ -15,12 +15,9 @@ const Language = (props) => {
       .get("http://192.168.0.183:9988/api/book/category/4")
       .then((res) => setLanguage(res.data));
   };
+  
   const fetchData = async () => {
     // 멤버목록 가져오기
-    const params = {
-      start: 1,
-      count: 5,
-    };
     const resultlanguage = await instance.get(requests.fetchLanguage);
     setLanguage(resultlanguage.data.data);
   };
@@ -33,22 +30,10 @@ const Language = (props) => {
   const itemChange = (e) => {
     setItems(Number(e.target.value));
   };
-  // console.log(items * (page - 1), items * (page - 1) + items);
 
   const handlePageChange = (page) => {
     setPage(page);
   };
-  // const languageArr = props.language.map((item) => {
-  //   return (
-  //     <div>
-  //       <img
-  //         src={`http://192.168.0.183:9988${item.imageUri}`}
-  //         alt={item.title}
-  //         className="img"
-  //       />
-  //     </div>
-  //   );
-  // });
 
   return (
     <div>

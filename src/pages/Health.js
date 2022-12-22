@@ -26,7 +26,6 @@ const Health = (props) => {
   const itemChange = (e) => {
     setItems(Number(e.target.value));
   };
-  // console.log(items * (page - 1), items * (page - 1) + items);
   const handlePageChange = (page) => {
     setPage(page);
   };
@@ -49,6 +48,7 @@ const Health = (props) => {
           const price2 = prici.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return (
             <div>
+              {/* 각테그 눌렀을때 디테일로 연결 */}
               <Link to={`/detail/${v.seq}`}>{v.title}</Link>
               <img
                 src={`http://192.168.0.183:9988${v.imageUri}`}

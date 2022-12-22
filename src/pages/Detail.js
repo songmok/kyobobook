@@ -1,64 +1,87 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const Detail = (props) => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const goHome = () => {
+    if (window) {
+      navigate("/", { state: { from: "/detail" } });
+    }
+  };
 
   const bookObj = props.detail.find((item) => {
     if (item.seq === parseInt(id)) {
       return item;
     }
   });
-
-  // console.log(item);
-  // const list = props.detail.find((item, index) => {
-  //   return (
-  //     <div key={index}>
-  //       <div className="d-flexbox">
-  //         <img
-  //           src={`http://192.168.0.183:9988${item.imageUri}`}
-  //           className="img-1"
-  //           alt={item.title}
-  //         />
-  //       </div>
-  //       <p className="d-title">{item.title}</p>
-  //       <div className="d-txtbox">
-  //         <span className="d-publisher">{item.publisher}</span>
-  //         <span className="d-publishDt">{item.publishDt}</span>
-  //       </div>
-  //       <span className="d-price">{item.price}</span>
-  //       <div className="d-gray-box">
-  //         <span className="d-info">책소개</span>
-  //         <p>
-  //           <p dangerouslySetInnerHTML={{ __html: item.contentTitle }}></p>
-  //         </p>
-  //         <p dangerouslySetInnerHTML={{ __html: item.contentText }}></p>
-  //       </div>
-  //     </div>
-  //   );
-  // });
   return (
     <div>
-      <div>
-        <div>
-          <div className="d-flexbox">
-            <img
-              src={`http://192.168.0.183:9988${bookObj.imageUri}`}
-              className="img-1"
-              alt={bookObj.title}
-            />
-          </div>
-          <p className="d-title">{bookObj.title}</p>
-          <div className="d-txtbox">
-            <span className="d-publisher">{bookObj.publisher}</span>
-            <span className="d-publishDt">{bookObj.publishDt}</span>
-          </div>
-          <span className="d-price">{bookObj.price}</span>
-          <div className="d-gray-box">
-            <span className="d-info">책소개</span>
-            <p dangerouslySetInnerHTML={{ __html: bookObj.contentTitle }}></p>
-            <p dangerouslySetInnerHTML={{ __html: bookObj.contentText }}></p>
-          </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="d-bt btn btn-primary" type="button " onClick={goHome}>
+          Home
+        </button>
+      </div>
+      <div className="d-box">
+        <img
+          src={`http://192.168.0.183:9988${bookObj.imageUri}`}
+          className="img-1 shadow p-3 mb-5 bg-body rounded "
+          alt={bookObj.title}
+        />
+        <p className="d-title">{bookObj.title}</p>
+        <div className="d-txtbox">
+          <span>{bookObj.writerName}</span>
+          <span>{bookObj.publisher}</span>
+          <span>{bookObj.publishDt}</span>
+        </div>
+        <div className="d-price">{bookObj.price}원</div>
+      </div>
+      <div class="d-bt-2 d-grid gap-2 col-6 mx-auto">
+        <button class="d-bt-2 btn btn-primary" type="button ">
+          책정보
+        </button>
+      </div>
+      <div className="d-text-box">
+        <p
+          className="d-contentTitle"
+          dangerouslySetInnerHTML={{ __html: bookObj.contentTitle }}
+        ></p>
+        <p dangerouslySetInnerHTML={{ __html: bookObj.contentText }}></p>
+
+        <img
+          src={`http://192.168.0.183:9988${bookObj.detailImageUri}`}
+          className="img-2"
+          alt={bookObj.title}
+        />
+      </div>
+
+      <p>
+        <a
+          class="btn btn-primary"
+          data-bs-toggle="collapse"
+          href="#collapseExample"
+          role="button"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          
+        </a>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          Button with data-bs-target
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          Some placeholder content for the collapse component. This panel is
+          hidden by default but revealed when the user activates the relevant
+          trigger.
         </div>
       </div>
     </div>
