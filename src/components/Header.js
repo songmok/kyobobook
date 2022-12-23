@@ -26,13 +26,9 @@ const Header = () => {
   return (
     <div className="header">
       <div className="menu">
-      <Link to={"/members"}>
-          <FontAwesomeIcon
-            icon={faPerson}
-            className="h-icon"
-            onClick={() => toggleMenu()}
-          ></FontAwesomeIcon>
-      </Link>
+        <Link to={"/members"}>
+          <FontAwesomeIcon icon={faPerson} className="h-icon"></FontAwesomeIcon>
+        </Link>
         <FontAwesomeIcon
           icon={faBars}
           className="menu-icon"
