@@ -11,9 +11,7 @@ const Home = () => {
 
       <div className="home-box">
         <Link className="home-link" to="/novel">
-          <img src="img/novel1.jpg" alt="" className="home-img" />
-          <img src="img/novel2.jpg" alt="" className="home-img" />
-          <img src="img/novel3.jpg" alt="" className="home-img" />
+          <img src="img/novel2.jpg" alt="" className="home-img shadow p-3 mb-5 bg-body rounded" />
           <div className="home-txt">소설</div>
         </Link>
 

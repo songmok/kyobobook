@@ -32,24 +32,19 @@ const App = () => {
     setHome(resultHome.data);
     const resultNovel = await instance.get(requests.fetchNovel);
     setNovel(resultNovel.data.data);
-    const resultCook = await instance.get(requests.fetchCook, { params });
-    setCook(resultCook.data);
-    const resultHealth = await instance.get(requests.fetchHealth, { params });
-    setHealth(resultHealth.data);
-    const resultLanguage = await instance.get(requests.fetchLanguage, {
-      params,
-    });
-    setLanguage(resultLanguage.data);
-    const resultComputerit = await instance.get(requests.fetchComputerIt, {
-      params,
-    });
-    setComputerIt(resultComputerit.data);
-    const resultDetail = await instance.get(requests.fetchDetail, { params });
+    const resultCook = await instance.get(requests.fetchCook);
+    setCook(resultCook.data.data);
+    const resultHealth = await instance.get(requests.fetchHealth);
+    setHealth(resultHealth.data.data);
+    const resultLanguage = await instance.get(requests.fetchLanguage);
+    setLanguage(resultLanguage.data.data);
+    const resultComputerit = await instance.get(requests.fetchComputerIt);
+    setComputerIt(resultComputerit.data.data);
+    const resultDetail = await instance.get(requests.fetchDetail);
     setDetail(resultDetail.data.data);
-    const resultCate = await instance.get(requests.fetchHeader, { params });
+    const resultCate = await instance.get(requests.fetchHeader);
     setCate(resultCate.data.data);
   };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -61,7 +56,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home home={home} />} />
           <Route path="/" element={<Search home={home} />} />
-
           <Route path="/novel" element={<Novel novel={novel} />} />
           <Route path="/cook" element={<Cook cook={cook} />} />
           <Route path="/health" element={<Health health={health} />} />

@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import requests from "./../api/request";
-import instance from "./../api/axios";
-
-// import "./Paging.css";
 import Pagination from "react-js-pagination";
 import { Link } from "react-router-dom";
-const Health = (props) => {
-  const [health, setHealth] = useState([]);
+const Health = ({ health }) => {
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(5);
-  const getClick = () => {
-    axios
-      .get("http://192.168.0.183:9988/api/book/category/3")
-      .then((res) => setHealth(res.data));
-  };
-  const fetchData = async () => {
-    const resultHealth = await instance.get(requests.fetchHealth);
-    setHealth(resultHealth.data.data);
-  };
-  useEffect(() => {
-    fetchData();
-    return () => {};
-  }, []);
   const itemChange = (e) => {
     setItems(Number(e.target.value));
   };
-  // console.log(items * (page - 1), items * (page - 1) + items);
+
   const handlePageChange = (page) => {
     setPage(page);
   };
@@ -41,7 +22,6 @@ const Health = (props) => {
           <option value="20">20개</option>
         </select>
       </div>
-      <div className="get-list">{getClick}</div>
       {health
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {
@@ -60,7 +40,7 @@ const Health = (props) => {
                 <div className="list-right">
                   <h3 className="list-title">{v.title}</h3>
                   <div className="list-txt-wrap">
-                    <span className="list-txt">{v.wiSeq}</span>
+                    <span className="list-txt">{v.writerName}</span>
                     <span className="list-txt">{v.publisher}</span>
                   </div>
                   <div className="list-price">{price2}원</div>

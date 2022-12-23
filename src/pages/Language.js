@@ -1,54 +1,19 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import requests from "./../api/request";
-import instance from "./../api/axios";
+import React, { useState } from "react";
 
 // import "./Paging.css";
 import Pagination from "react-js-pagination";
 import { Link } from "react-router-dom";
-const Language = (props) => {
-  const [language, setLanguage] = useState([]);
+const Language = ({ language }) => {
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(5);
-  const getClick = () => {
-    axios
-      .get("http://192.168.0.183:9988/api/book/category/4")
-      .then((res) => setLanguage(res.data));
-  };
-  const fetchData = async () => {
-    // 멤버목록 가져오기
-    const params = {
-      start: 1,
-      count: 5,
-    };
-    const resultlanguage = await instance.get(requests.fetchLanguage);
-    setLanguage(resultlanguage.data.data);
-  };
-
-  useEffect(() => {
-    fetchData();
-    return () => {};
-  }, []);
 
   const itemChange = (e) => {
     setItems(Number(e.target.value));
   };
-  // console.log(items * (page - 1), items * (page - 1) + items);
 
   const handlePageChange = (page) => {
     setPage(page);
   };
-  // const languageArr = props.language.map((item) => {
-  //   return (
-  //     <div>
-  //       <img
-  //         src={`http://192.168.0.183:9988${item.imageUri}`}
-  //         alt={item.title}
-  //         className="img"
-  //       />
-  //     </div>
-  //   );
-  // });
 
   return (
     <div className="list-wrap">
@@ -61,7 +26,6 @@ const Language = (props) => {
           <option value="20">20개</option>
         </select>
       </div>
-      <div className="get-list">{getClick}</div>
       {language
         .slice(items * (page - 1), items * (page - 1) + items)
         .map((v, i) => {
@@ -80,7 +44,7 @@ const Language = (props) => {
                 <div className="list-right">
                   <h3 className="list-title">{v.title}</h3>
                   <div className="list-txt-wrap">
-                    <span className="list-txt">{v.wiSeq}</span>
+                    <span className="list-txt">{v.writerName}</span>
                     <span className="list-txt">{v.publisher}</span>
                   </div>
                   <div className="list-price">{price2}원</div>

@@ -56,12 +56,6 @@ const Header = () => {
       </Link>
       <div className="searchbox-wrap">
         <Apps />
-        {/* <input
-          type="text"
-          id="search-text"
-          placeholder="search"
-          className="searchbox"
-        ></input> */}
         <div className="searchbox-icon">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </div>

@@ -34,11 +34,10 @@ em {
   font-style: normal;
 }
 
-
 .container {
   text-align: center;
   margin-top: 20px;
-  width: 367px;
+  max-width: 367px;
   padding: 0;
 }
 /* HEADER */
@@ -159,11 +158,11 @@ select {
   margin-top: 15px;
   font-weight: bold;
   position: fixed;
-  left: 50%;
+  left: 0;
   transform: translateX(-50%);
   z-index: 1000;
   bottom: 0;
-  width: 100%;
+  width: 367px;
   height: 50px;
   margin: 0;
   background: #fff;
@@ -196,9 +195,6 @@ ul.pagination li.active {
   background-color: #337ab7;
 }
 
-
-
-
 /* Home */
 .H-t {
   font-size: 1.3rem;
@@ -210,9 +206,6 @@ ul.pagination li.active {
   font-size: 1rem;
   font-weight: 700;
 }
-
-
-
 
 /* list */
 .list {
@@ -326,6 +319,10 @@ ul.pagination li.active {
   color: #000949;
 }
 
+.d-text-box {
+  background: rgba(0, 0, 0, 0.01);
+}
+
 .d-contentTitle {
   font-size: 15px;
   font-weight: 700;
@@ -333,4 +330,33 @@ ul.pagination li.active {
 .img-2 {
   width: 200px;
   height: 100%;
+}
+.d-bt-box {
+  background: #334475;
+  width: 100%;
+  height: 46px;
+  margin-bottom: 30px;
+}
+.d-bt {
+  line-height: 46px;
+  font-weight: bold;
+  border: none;
+  font-size: 2.4rem;
+  background: none;
+  color: #fff;
+}
+.img-2 {
+  margin-top: 30px;
+}
+.d-contentTitle {
+  margin-top: 20px;
+}
+.d-contentText {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.d-line {
+  background: #4db848;
+  height: 1px;
+  margin-top: 20px;
 }
