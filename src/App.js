@@ -6,22 +6,33 @@ import Health from "./pages/Health";
 import Language from "./pages/Language";
 import ComputerIT from "./pages/ComputerIT";
 import Detail from "./pages/Detail";
+import Members from "./pages/Members";
 import NotFound from "./pages/NotFound";
 import instance from "./api/axios";
 import requests from "./api/request";
-import Search from "./pages/search";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const App = () => {
   const [home, setHome] = useState([]);
+  const [members] = useState([
+    { name: "F-조준영", photo: "img/m1.jpg" },
+    { name: "F-오한수", photo: "img/m2.jpg" },
+    { name: "F-옥지은", photo: "img/m3.jpg" },
+    { name: "B-남현우", photo: "img/m4.jpg" },
+    { name: "B-김한수", photo: "img/m5.jpg" },
+    { name: "B-류승지", photo: "img/m6.jpg" },
+    { name: "B-이영준", photo: "img/m7.jpg" },
+    { name: "B-정인원", photo: "img/m8.jpg" },
+  ]);
   const [novel, setNovel] = useState([]);
   const [cook, setCook] = useState([]);
   const [health, setHealth] = useState([]);
   const [language, setLanguage] = useState([]);
   const [computerit, setComputerIt] = useState([]);
   const [detail, setDetail] = useState([]);
-  const [cate, setCate] = useState([]);
+
   const fetchData = async () => {
     // 멤버목록 가져오기
     const params = {
@@ -42,8 +53,6 @@ const App = () => {
     setComputerIt(resultComputerit.data.data);
     const resultDetail = await instance.get(requests.fetchDetail);
     setDetail(resultDetail.data.data);
-    const resultCate = await instance.get(requests.fetchHeader);
-    setCate(resultCate.data.data);
   };
   useEffect(() => {
     fetchData();
@@ -55,7 +64,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home home={home} />} />
-          <Route path="/" element={<Search home={home} />} />
+          <Route path="/members" element={<Members members={members} />} />
           <Route path="/novel" element={<Novel novel={novel} />} />
           <Route path="/cook" element={<Cook cook={cook} />} />
           <Route path="/health" element={<Health health={health} />} />

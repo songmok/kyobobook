@@ -1,23 +1,76 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Apps from "../pages/search";
+import { faPerson } from "@fortawesome/free-solid-svg-icons";
+
 const Header = () => {
-  const [nav, setNav] = useState(false); // 메뉴의 초기값을 false로 설정
+  const [nav, setNav] = useState(true);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const toggleMenu = () => {
-    setNav((nav) => !nav); // on,off 개념 boolean
+    setNav((nav) => !nav);
   };
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+  useEffect(() => {
+    document.getElementById("root")?.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    window.addEventListener("scroll", updateScroll);
+    return () => {
+      window.removeEventListener("scroll", updateScroll);
+    };
+  }, []);
+  console.log(scrollPosition);
   return (
     <div className="header">
       <div className="menu">
+      <Link to={"/members"}>
+          <FontAwesomeIcon
+            icon={faPerson}
+            className="h-icon"
+            onClick={() => toggleMenu()}
+          ></FontAwesomeIcon>
+      </Link>
         <FontAwesomeIcon
           icon={faBars}
           className="menu-icon"
           onClick={() => toggleMenu()}
         ></FontAwesomeIcon>
-        <nav className={nav ? "show-menu" : "hide-menu"} id="main">
+        <nav className={nav ? "show-menu" : "hide-menu"}>
+          <ul className="gnb-top">
+            <li className="depth-top">
+              <Link className="btn-success-top" to="/novel">
+                소설
+              </Link>
+            </li>
+            <li className="depth-top">
+              <Link className="btn-success-top" to="/cook">
+                요리
+              </Link>
+            </li>
+            <li className="depth-top">
+              <Link className="btn-success-top" to="/health">
+                건강
+              </Link>
+            </li>
+            <li className="depth-top">
+              <Link className="btn-success-top" to="/language">
+                외국어
+              </Link>
+            </li>
+            <li className="depth-top">
+              <Link className="btn-success-top" to="/computerit">
+                컴퓨터/IT
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <nav
+          className={scrollPosition > 110 ? "original_header" : "change_header"}
+          id="main"
+        >
           <ul className="gnb">
             <li className="depth">
               <Link className="btn-success" to="/novel">
@@ -54,12 +107,6 @@ const Header = () => {
           alt="교보문고"
         />
       </Link>
-      <div className="searchbox-wrap">
-        <Apps />
-        <div className="searchbox-icon">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </div>
-      </div>
     </div>
   );
 };
